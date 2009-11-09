@@ -7,7 +7,7 @@
 %%%
 %%% The implementation has been tested on the sample Swedish
 %%% vocabulary and produces an identical result when compared to its
-%%% stemmed equivalent.
+%%% stemmed reference equivalent.
 %%%
 %%% The steps below utilize regular erlang pattern matching, but stem
 %%% the words backwards since the Porter algorithm works by checking
