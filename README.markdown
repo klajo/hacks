@@ -1,11 +1,11 @@
 This is a collection of various hacks
 =====================================
 
-Well, not a very large right now, since there's only one hack here,
-but still... :-)
+Well, not a very large collection right now, since there's only few
+hacks here, but still... :-)
 
-beam_renamer
-------------
+beam
+----
 
 The idea behind `beam_renamer` is to be able to load an erlang module
 (which is already compiled) under a different name.  Normally, there's
@@ -34,3 +34,20 @@ by replacing the module name *within* the beam file.
     {module,y}
 
 See the comments in the source code for more details.
+
+
+stem
+----
+
+`stem_en` is an implementation of the (English Porter2 stemming
+algorithm)[http://snowball.tartarus.org/algorithms/english/stemmer.html].
+
+The implementation has been tested on the sample English vocabulary
+and produces an identical result when compared to its stemmed
+reference equivalent.  Some performance figures: stems 400,000 words
+per second on a 2.53 GHz Core 2 Duo MacBook Pro.
+
+`stem_sv` is its (Swedish
+counterpart)[http://snowball.tartarus.org/algorithms/swedish/stemmer.html].
+Some performance figures: stems 900,000 words per second on a 2.53 GHz
+Core 2 Duo MacBook Pro.
