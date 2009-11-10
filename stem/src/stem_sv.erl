@@ -12,7 +12,7 @@
 %%% The steps below utilize regular erlang pattern matching, but stem
 %%% the words backwards since the Porter algorithm works by checking
 %%% the end of the words, but patterns match from the front.
-%%% @author Klas Johansson (klas.johansson@gmail.com)
+%%% @author Klas Johansson (erlang@klasjohansson.se)
 %%% @end
 %%%-------------------------------------------------------------------
 -module(stem_sv).

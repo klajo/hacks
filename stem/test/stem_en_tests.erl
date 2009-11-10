@@ -1,6 +1,6 @@
 %%%-------------------------------------------------------------------
 %%% @doc Test {@link stem_en}.
-%%% @author Klas Johansson (klas.johansson@gmail.com)
+%%% @author Klas Johansson (erlang@klasjohansson.se)
 %%% @end
 %%%-------------------------------------------------------------------
 -module(stem_en_tests).
