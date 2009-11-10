@@ -39,15 +39,15 @@ See the comments in the source code for more details.
 stem
 ----
 
-`stem_en` is an implementation of the (English Porter2 stemming
-algorithm)[http://snowball.tartarus.org/algorithms/english/stemmer.html].
+`stem_en` is an implementation of the [English Porter2 stemming
+algorithm](http://snowball.tartarus.org/algorithms/english/stemmer.html).
 
 The implementation has been tested on the sample English vocabulary
 and produces an identical result when compared to its stemmed
 reference equivalent.  Some performance figures: stems 400,000 words
 per second on a 2.53 GHz Core 2 Duo MacBook Pro.
 
-`stem_sv` is its (Swedish
-counterpart)[http://snowball.tartarus.org/algorithms/swedish/stemmer.html].
+`stem_sv` is its [Swedish
+counterpart](http://snowball.tartarus.org/algorithms/swedish/stemmer.html).
 Some performance figures: stems 900,000 words per second on a 2.53 GHz
 Core 2 Duo MacBook Pro.
