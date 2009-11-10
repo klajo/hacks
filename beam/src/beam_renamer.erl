@@ -1,7 +1,46 @@
+%%%-------------------------------------------------------------------
+%%% @doc 
+%%% Rename a module which is already compiled.
+%%%
+%%% The idea behind `beam_renamer` is to be able to load an erlang module
+%%% (which is already compiled) under a different name.  Normally, there's
+%%% an error message if one does that:
+%%% 
+%%%     1> {x, Bin, _} = code:get_object_code(x).
+%%%     {x,<<...>>,...}
+%%%     2> code:load_binary(y, "y.beam", Bin).
+%%%     {error,badfile}
+%%%     
+%%%     =ERROR REPORT==== 8-Nov-2009::22:01:24 ===
+%%%     Loading of y.beam failed: badfile
+%%%     
+%%%     =ERROR REPORT==== 8-Nov-2009::22:01:24 ===
+%%%     beam/beam_load.c(1022): Error loading module y:
+%%%       module name in object code is x
+%%% 
+%%% This is where `beam_renamer` comes in handy.  It'll rename the module
+%%% by replacing the module name *within* the beam file.
+%%% 
+%%%     1> {x, Bin0, _} = code:get_object_code(x).
+%%%     {x,<<...>>,...}
+%%%     2> Bin = beam_renamer:rename(Bin0, y).
+%%%     <<...>>
+%%%     2> code:load_binary(y, "y.beam", Bin).
+%%%     {module,y}
+%%% 
+%%% @author Klas Johansson (erlang@klasjohansson.se)
+%%% @end
+%%%-------------------------------------------------------------------
 -module(beam_renamer).
 
+%%--------------------------------------------------------------------
+%% API
+%%--------------------------------------------------------------------
 -export([rename/2]).
 
+%%--------------------------------------------------------------------
+%% Definitions
+%%--------------------------------------------------------------------
 -define(beam_num_bytes_alignment, 4). %% according to spec below
 
 %% In order to load a module under a different name, the module name
@@ -91,6 +130,16 @@
 %%     xx bytes   ...     term_to_binary encoded literal
 %%     4 bytes    size    size of next literal
 %%     ...
+
+%%--------------------------------------------------------------------
+%% @spec rename(BeamBin0, NewName) -> BeamBin
+%%         BeamBin0 = binary()
+%%         BeamBin = binary()
+%%         NewName = atom()
+%% @doc Rename a module.  `BeamBin0' is a binary containing the
+%% contents of the beam file.
+%% @end
+%%--------------------------------------------------------------------
 rename(BeamBin0, Name) ->
     Name0    = get_module_name(BeamBin0),
     NameBin  = atom_to_binary(Name, latin1),

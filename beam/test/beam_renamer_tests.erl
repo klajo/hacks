@@ -1,3 +1,8 @@
+%%%-------------------------------------------------------------------
+%%% @doc Test {@link beam_renamer}.
+%%% @author Klas Johansson (erlang@klasjohansson.se)
+%%% @end
+%%%-------------------------------------------------------------------
 -module(beam_renamer_tests).
 
 -include_lib("eunit/include/eunit.hrl").
